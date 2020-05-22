@@ -1,0 +1,1 @@
+const actions={RENDERER_DEVTOOLS_OPEN:"devtools-open",RENDERER_SHOW_ACCESSIBILITY_PROMPT:"main-show-accesibility-prompt",RENDERER_CHECK_FOR_UPDATE:"main-check-for-update",RENDERER_SWITCH_TO_ONLINE_MODE:"switch-to-online-mode",RENDERER_MINIPLAYER_SWITCH:"miniplayer-switch",RENDERER_UPDATE_TOUCHBAR_SLIDER:"update-touch-bar-slider"};module.exports=actions;

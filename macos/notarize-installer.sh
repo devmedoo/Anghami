@@ -1,0 +1,1 @@
+xcrun altool --notarize-app --primary-bundle-id "com.anghami.anghami" --username "pierre_raii_1997@hotmail.com" --password "@keychain:AC_PASSWORD" --verbose --file /Users/pierreraii/Sites/AnghamiDesktopApp/release/installers/macOS/Anghami-Installer.zip

@@ -1,0 +1,511 @@
+:root {
+    --main-color: #fff;
+    --primary-text-color: #000;
+    --secondary-text-color: #919191;
+    --button-icon-color: #000;
+    --button-background-color: #e1e1e1;
+    --player-separator: #eff3f5;
+    --liked-icon-color: #8d00f2;
+    --queue-area-color: #f4f4f4;
+    --queue-item-border-color: #f3f5f7;
+    --queue-item-background-color: #f7f9fa;
+    --queue-thumb-background-color: #d2d6d8;
+    --scrollbar-track-color: #d8d8d8;
+    --scrollbar-thumb-color: #b1b1b1;
+    --brand-purple: #8d00f2;
+    --brand-logo: url(../../icons/anghami-logo-colored.png);
+    --tray-center: 50vw;
+    --arrow-size: 10px;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Roboto'), local('Roboto-Regular'), url('../../fonts/KFOmCnqEu92Fr1Mu4mxK.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body {
+    padding: 5px;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    user-select: none;
+}
+
+p {
+    margin: 0;
+}
+
+div {
+    color: var(--primary-text-color);
+}
+
+#tray-arrow-top {
+    text-align: center;
+    color: var(--main-color);
+    transition: 0.1s all;
+}
+
+#tray-arrow-top p {
+    transform: scaleX(2);
+    height: var(--arrow-size);
+    line-height: var(--arrow-size);
+    margin: 0 auto;
+    width: fit-content;
+    text-shadow: 0 -2.7px 2px rgba(0,0,0,0.3);
+}
+
+#tray-arrow-bottom {
+    text-align: center;
+    color: var(--queue-area-color);
+    transition: 0.1s all;
+}
+
+#tray-arrow-bottom p {
+    transform: scaleX(2);
+    height: var(--arrow-size);
+    line-height: var(--arrow-size);
+    margin: 0 auto;
+    width: fit-content;
+    text-shadow: 0 2.7px 2px rgba(0,0,0,0.3);
+}
+
+#tray-content {
+    background: var(--main-color);
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: 0.1s all;
+    color: var(--primary-text-color);
+}
+
+#anghami-logo {
+    height: 22px;
+    margin: 15px 0 0 15px;
+    background-image: var(--brand-logo);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#current-track {
+    width: 100%;
+    height: 130px;
+    flex-direction: row;
+}
+
+#current-track-coverart {
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    margin: 15px;
+    border-radius: 0.5em;
+    float: left;
+    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.3);
+}
+
+.current-track-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    float: left;
+    height: 130px;
+    width: calc(100vw - 180px);
+}
+
+.current-track-info p {
+    font-size: 14px;
+    line-height: 25px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+#current-track-title {
+    font-weight: 700;
+}
+
+#current-track-artist {
+    color: var(--secondary-text-color);
+}
+
+#player-controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--player-separator);
+}
+
+#player-controls div {
+    flex-grow: 1;
+    align-self: center;
+    text-align: center;
+    margin: auto;
+}
+
+#play-button {
+    border-radius: 50%;
+    background: var(--brand-purple);
+    width: 50px;
+    height: 50px;
+    fill: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.order-1 {
+    order: 1;
+}
+
+.order-2 {
+    order: 2;
+}
+
+.order-3 {
+    order: 3;
+}
+
+.order-4 {
+    order: 4;
+}
+
+.order-5 {
+    order: 5;
+}
+
+#queue-area {
+    background: var(--queue-area-color);
+    height: 100%;
+    padding-bottom: 10px;
+}
+
+#queue-container {
+    height: 186px;
+    overflow-y: scroll;
+    overscroll-behavior: contain;
+    width: calc(100% - 18px);
+    margin: 0 9px;
+}
+
+#queue-title {
+    margin: 7px 15px;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 15px;
+    text-transform: uppercase;
+}
+
+#queue-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+#queue-container::-webkit-scrollbar-track {
+    background: var(--scrollbar-track-color);
+    border-radius: 3px;
+}
+
+#queue-container::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-color);
+    border-radius: 3px;
+}
+
+.control-button {
+    fill: var(--primary-text-color);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.button-area {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.active-shuffle-repeat {
+    background: var(--button-background-color);
+    fill: #000;
+    border-radius: 50%;    
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    height: 62px;
+    cursor: pointer;
+    transition: background-color 0.1s;
+    margin-right: 2px;
+}
+
+.item:hover, .item-playing {
+    background-color: var(--queue-item-background-color);
+}
+
+.item-playing-indicator:after {
+    content: '';
+    position: relative;
+    top: 20px;
+    left: calc(44px - 100%);
+    width: 25px;
+    height: 25px;
+    background-image: url(../../icons/svg/equalizer.svg);
+    background-size: 25px 25px;
+}
+
+.item-thumb {
+    width: 50px;
+    height: 50px;
+    border-radius: 0.3em;
+    margin: 6px 14px 6px 6px;
+    background-color: var(--queue-thumb-background-color);
+    background-size: cover;
+}
+
+.item-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    float: left;
+    width: calc(100% - 95px);
+}
+
+.item-info p {
+    line-height: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none;
+    text-align: left;
+}
+
+.item-title {
+    font-size: 12px;
+}
+
+.item-artist {
+    font-size: 11px;
+    color: var(--secondary-text-color);
+}
+
+#progress {
+    width: calc(100% - 30px);
+    margin: 5px 15px 15px;
+    height: 5px;
+}
+
+#progress div {
+    cursor: pointer;
+}
+
+#progress-full {
+    background: #9ea3a5;
+    height: 5px;
+    width: 100%;
+}
+
+#progress-current {
+    background: linear-gradient(to right,#e1418c 0,#92278f 45%,#018af0 100%);
+    height: 5px;
+    width: 100%;
+    transform-origin: left;
+}
+
+#progress-handle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    opacity: 0;
+}
+
+#progress-handle-under {
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius: 50%;
+    border: 1px solid #d2d0d0;
+}
+
+#time {
+    position: absolute;
+    right: 20px;
+    font-size: 12px;
+    transform: translateY(-26px);
+    cursor: auto !important;
+}
+
+#elapsed-time {
+    color: gray;
+}
+
+#window-controls {
+    position: absolute;
+    right: 5px;
+    display: flex;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 8px;
+    margin-right: 8px;
+}
+
+#window-controls div {
+    height: 25px;
+    width: 25px;
+    padding-top: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+}
+
+#like-button {
+    position: relative;
+    right: -6px;
+    top: 44px;
+    width: 17px;
+    display: flex;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+}
+
+#like-icon g {
+    fill: var(--primary-text-color);
+}
+
+#liked-icon g {
+    fill: var(--liked-icon-color);
+}
+
+.draggable {
+    -webkit-app-region: drag;
+}
+
+.is-tray-content {
+    border-radius: 5px;
+}
+
+.lds-ellipsis {
+    display: block;
+    position: relative;
+    transform: scale(0.5) translate(-5px, -32px);
+}
+.lds-ellipsis div {
+    position: absolute;
+    top: 27px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+    left: 6px;
+    animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+    left: 6px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+    left: 26px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+    left: 45px;
+    animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+  }
+    100% {
+      transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+  }
+    100% {
+      transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+  }
+    100% {
+      transform: translate(19px, 0);
+  }
+}
+
+html[lang='ar'] .order-1 {
+    order: 5;
+}
+
+html[lang='ar'] .order-5 {
+    order: 1;
+}
+
+html[lang='ar'] #progress-current {
+    transform-origin: right;
+}
+
+html[lang='ar'] #time {
+    left: 20px;
+}
+
+html[lang='ar'] #elapsed-time {
+    color: var(--primary-text-color);
+}
+
+html[lang='ar'] #total-time {
+    color: gray;
+}
+
+html[lang='ar'] #like-button {
+    left: 17px;
+}
+
+html[lang='ar'] #current-track-coverart {
+    float: right;
+}
+
+html[lang='ar'] .current-track-info {
+    float: right;
+    text-align: right;
+}
+
+html[lang='ar'] .current-track-info p {
+    text-align: right;
+}
+
+html[lang='ar'] #queue-container {
+    direction: rtl;
+}
+
+html[lang='ar'] .item-playing-indicator:after {
+    right: calc(50px - 100%);
+    left: auto;
+}
+
+html[lang='ar'] .item-info p {
+    text-align: right;
+}

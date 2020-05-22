@@ -1,0 +1,1 @@
+const actions={OPEN_DIALOG:"match-music-open-dialog",NEW_BATCH:"match-music-new-batch",UPLOAD_SONG:"match-music-upload-song",BATCH_DONE:"match-music-batch-done",MATCH_CANCEL:"match-music-cancel"};module.exports=actions;

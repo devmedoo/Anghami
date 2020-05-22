@@ -1,0 +1,1 @@
+const remote=require("electron").remote,ipcRenderer=require("electron").ipcRenderer;ipcRenderer.on("alert",(e,r)=>{alert("First Launch should be online"),ipcRenderer.send("forceQuit")});

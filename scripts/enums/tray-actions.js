@@ -1,0 +1,1 @@
+const actions={TRAY_THEME_INFO:"tray-theme-info",TRAY_LANGUAGE:"tray-language",TRAY_CURRENT_OPTIONS:"tray-current-options",TRAY_CURRENT_TRACK:"tray-current-track",TRAY_CURRENT_QUEUE:"tray-current-queue",TRAY_CURRENT_PROGRESS:"tray-current-progress"};module.exports=actions;

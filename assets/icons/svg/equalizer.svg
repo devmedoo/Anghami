@@ -1,0 +1,17 @@
+<svg width="100mm" height="100mm" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" style="transform: rotate(180deg); transform-origin: 50% 50%">
+    <g transform="translate(0,-197)" fill="#fff" stroke-width=".249">
+        <rect id="rect1" x="10" y="210" width="22" height="75" />
+        <rect id="rect2" x="39.2" y="210" width="22" height="75" />
+        <rect id="rect3" x="68.3" y="210" width="22" height="75" />
+        <animate xlink:href="#rect1" attributeName="height" from="10" to="10" dur="2s" begin="0s"
+            values="10; 25; 45; 18; 60; 75; 25; 70; 45; 25; 10" keyTimes="0;0.1;0.2;0.3;0.4;0.5;0.6;0.7;0.8;0.9;1"
+            repeatCount="indefinite" fill="freeze" id="rect1-anim" />
+        <animate xlink:href="#rect2" attributeName="height" from="10" to="10" dur="2s" begin="-1.5s"
+            values="10; 25; 45; 18; 60; 75; 25; 70; 45; 25; 10" keyTimes="0;0.1;0.2;0.3;0.4;0.5;0.6;0.7;0.8;0.9;1"
+            repeatCount="indefinite" fill="freeze" id="rect2-anim" />
+        <animate xlink:href="#rect3" attributeName="height" from="10" to="10" dur="2s" begin="-0.5s"
+            values="10; 25; 45; 18; 60; 75; 25; 70; 45; 25; 10" keyTimes="0;0.1;0.2;0.3;0.4;0.5;0.6;0.7;0.8;0.9;1"
+            repeatCount="indefinite" fill="freeze" id="rect3-anim" />
+    </g>
+</svg>

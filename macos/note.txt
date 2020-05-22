@@ -1,0 +1,3 @@
+# This directory contains all MacOS specific scripts/files
+# This directory contains two methods to notarize our app after buidling
+# both ways are valid, the bash one is more verbose the JS one uses electron-notarize package 

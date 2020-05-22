@@ -1,0 +1,23 @@
+{
+  "title": "Anghami Installer",
+  "icon": "./assets/icons/IconAnghami.icns",
+  "background": "./assets/images/install-application-background.png",
+  "window": {
+    "size":{
+      "width": 640,
+      "height": 480
+    }
+  },
+  "contents": [
+    { "x": 445, "y": 335, "type": "link", "path": "/Applications" },
+    { "x": 120, "y": 335, "type": "file", "path": "../release/macOS/Anghami-darwin-x64/Anghami.app" },
+    { "x": 50, "y": 600, "type": "position", "path": ".background" },
+    { "x": 100, "y": 600, "type": "position", "path": ".DS_Store" },
+    { "x": 150, "y": 600, "type": "position", "path": ".Trashes" },
+    { "x": 200, "y": 600, "type": "position", "path": ".VolumeIcon.icns" }
+  ],
+  "code-sign": {
+    "signing-identity": "4DB29F48EA1CEE7CF33E36C545F0E3CECE7CFF45",
+    "identifier": "com.anghami.anghami"
+  }
+}

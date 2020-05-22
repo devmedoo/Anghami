@@ -1,0 +1,97 @@
+{
+  "name": "anghami",
+  "productName": "Anghami",
+  "version": "2.0.11",
+  "author": "Anghami",
+  "description": "Anghami Desktop Player",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ./main.js",
+    "prebuild": "rm -rf ./assets/browser && rm -f ./assets/bin/ffmpeg-mac",
+    "build:macos": "npm run prebuild && electron-packager --build-version=1 ./ Anghami --platform=darwin --out=./release/macOS --asar.unpackDir='assets' --arch=x64 --app-bundle-id='com.anghami.anghami'  --darwinDarkModeSupport=true --icon=./assets/icons/IconAnghami.icns --ignore=assets/bin/ffmpeg.exe --ignore=release --ignore=node_modules/typescript --ignore=node_modules/macos --ignore='(^(/bin|/src)$|[Gg]runt(.*)|node_modules/grunt-(.*))' --ignore=node_modules/archiver --ignore=node_modules/electron-prebuilt --ignore='node_modules/electron/' --ignore=node_modules/typescript --ignore=node_modules/electron-winstaller --ignore=node_modules/electron-packager-tf --ignore=node_modules/electron-packager --ignore=node_modules/electron-osx-sign --ignore=node_modules/electron-installer-squirrel-windows --ignore=node_modules/electron-installer-dmg --ignore=node_modules/electron-download --ignore=node_modules/electron-builder --ignore=node_modules/appdmg --ignore=node_modules/archiver-utils --ignore=.vscode --overwrite",
+    "build:linux": "npm run prebuild && electron-packager --build-version=1 ./ Anghami --platform=linux --out=./release/linux --asar.unpackDir='assets' --arch=x64 --icon=./assets/icons/IconAnghami-new.ico --setupIcon=./assets/icons/IconAnghami-new.ico --ignore=assets/bin/ffmpeg-mac.zip --ignore=assets/bin/ffmpeg-mac-old.zip --ignore=node_modules/typescript --ignore=node_modules/macos --ignore='(^(/bin|/src)$|[Gg]runt(.*)|node_modules/grunt-(.*))' --ignore=node_modules/electron-winstaller-temp-fork --ignore=node_modules/electron-winstaller-fixed --ignore=node_modules/electron-prebuilt --ignore='/^node_modules/electron$/' --ignore=node_modules/electron-winstaller --ignore=node_modules/electron-packager-tf --ignore=node_modules/electron-packager --ignore=node_modules/electron-builder --ignore=node_modules/electron-installer-squirrel-windows --ignore=node_modules/appdmg --ignore=node_modules/command-line-args --version-string.CompanyName=Anghami --version-string.FileDescription='Anghami' --version-string.OriginalFilename='Anghami' --version-string.ProductName='Anghami' --version-string.InternalName='Anghami Desktop App' --ignore=release --ignore=.vscode --overwrite",
+    "build:win64": "npm run prebuild && electron-packager --build-version=1 ./ Anghami --platform=win32 --out=./release/windows-x64 --asar.unpackDir='assets' --arch=x64 --icon=./assets/icons/IconAnghami-new.ico --setupIcon=./assets/icons/IconAnghami-new.ico --ignore=assets/bin/ffmpeg-mac.zip --ignore=assets/bin/ffmpeg-mac-old.zip --ignore=node_modules/typescript --ignore=node_modules/macos --ignore='(^(/bin|/src)$|[Gg]runt(.*)|node_modules/grunt-(.*))' --ignore=node_modules/electron-winstaller-temp-fork --ignore=node_modules/electron-winstaller-fixed --ignore=node_modules/electron-prebuilt --ignore='/^node_modules/electron$/' --ignore=node_modules/electron-winstaller --ignore=node_modules/electron-packager-tf --ignore=node_modules/electron-packager --ignore=node_modules/electron-builder --ignore=node_modules/electron-installer-squirrel-windows --ignore=node_modules/appdmg --ignore=node_modules/command-line-args --version-string.CompanyName=Anghami --version-string.FileDescription='Anghami' --version-string.OriginalFilename='Anghami' --version-string.ProductName='Anghami' --version-string.InternalName='Anghami Desktop App' --ignore=release --ignore=.vscode --overwrite",
+    "build:win32": "npm run prebuild && electron-packager --build-version=1 ./ Anghami --platform=win32 --out=../release/windows-ia32 --asar.unpackDir='assets' --arch=ia32 --icon=./assets/icons/IconAnghami-new.ico --setupIcon=./assets/icons/IconAnghami-new.ico --ignore=assets/bin/ffmpeg-mac.zip --ignore=assets/bin/ffmpeg-mac-old.zip --ignore=node_modules/typescript --ignore=node_modules/macos --ignore='(^(/bin|/src)$|[Gg]runt(.*)|node_modules/grunt-(.*))' --ignore=node_modules/electron-winstaller-temp-fork --ignore=node_modules/electron-winstaller-fixed --ignore=node_modules/electron-prebuilt --ignore='/^node_modules/electron$/' --ignore=node_modules/electron-winstaller --ignore=node_modules/electron-packager-tf --ignore=node_modules/electron-packager --ignore=node_modules/electron-builder --ignore=node_modules/electron-installer-squirrel-windows --ignore=node_modules/appdmg --ignore=node_modules/command-line-args --version-string.CompanyName=Anghami --version-string.FileDescription='Anghami' --version-string.OriginalFilename='Anghami' --version-string.ProductName='Anghami' --version-string.InternalName='Anghami Desktop App' --ignore=release --ignore=.vscode --overwrite",
+    "installer:macos": "rm -f ../release/installers/macOS/Anghami-Installer.dmg && appdmg appdmg.json ../release/installers/macOS/Anghami-Installer.dmg",
+    "installer:win64": "grunt create-windows-installer:x64",
+    "installer:win32": "grunt create-windows-installer:x32",
+    "sign:macos": "electron-osx-sign ../release/macOS/Anghami-darwin-x64/Anghami.app --platform=darwin --type=distribution --entitlements=macos/entitlements.mac.plist --entitlements-inherit=macos/entitlements.mac.inherit.plist --hardened-runtime",
+    "notarize:macos": "node macos/notarize.js && xcrun stapler staple ../release/macOS/Anghami-darwin-x64/Anghami.app",
+    "notarize1:macos": "sh macos/notarize.sh && xcrun stapler staple ../release/macOS/Anghami-darwin-x64/Anghami.app",
+    "notarize-installer:macos": "sh macos/notarize-installer.sh && xcrun stapler staple ../release/installers/macOS/Anghami-Installer.dmg",
+    "staple-installer:macos": "xcrun stapler staple ../release/installers/macOS/Anghami-Installer.dmg",
+    "zip-app:macos": "ditto -c -k --sequesterRsrc --keepParent ../release/macOS/Anghami-darwin-x64/Anghami.app ../release/macOS/Anghami-darwin-x64/Anghami.zip",
+    "zip-installer:macos": "zip -r ../release/installers/macOS/Anghami-Installer.zip ../release/installers/macOS/Anghami-Installer.dmg",
+    "bundle:macos": "npm run build:macos && npm run sign:macos && npm run zip-app:macos && npm run notarize:macos && npm run installer:macos && npm run zip-installer:macos && npm run notarize-installer:macos",
+    "bundle:win64": "npm run build:win64 && npm run installer:win64",
+    "bundle:win32": "npm run build:win32 && npm run installer:win32",
+    "rebuild": "npm rebuild && ./node_modules/.bin/electron-rebuild electron-media-service",
+    "minify": "sh minify.sh"
+  },
+  "keywords": [
+    "Anghami",
+    "Anghami Desktop Client"
+  ],
+  "devDependencies": {
+    "@types/lru-cache": "^4.1.1",
+    "electron": "^8.0.3",
+    "electron-notarize": "^0.2.1",
+    "electron-osx-sign": "^0.4.15",
+    "electron-packager": "^14.2.1",
+    "electron-rebuild": "^1.8.8",
+    "eslint": "^7.0.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "grunt": "^1.0.4",
+    "grunt-electron-installer": "^2.1.0",
+    "type-fest": "^0.8.1",
+    "uglify-js": "github:mishoo/UglifyJS2#harmony"
+  },
+  "dependencies": {
+    "archiver": "^3.1.1",
+    "archiver-zip-encryptable": "^1.0.6",
+    "compare-versions": "^3.4.0",
+    "decompress-zip": "^0.3.2",
+    "detect-port": "^1.3.0",
+    "discord-rpc": "^3.1.1",
+    "electron-json-storage": "^4.1.8",
+    "electron-log": "^4.0.7",
+    "electron-settings": "^3.2.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "fs-extra": "^7.0.1",
+    "http-server": "^0.12.3",
+    "is-electron-renderer": "^2.0.1",
+    "is-online": "^8.2.0",
+    "mpris-service": "2.1.0",
+    "music-metadata": "^6.0.1",
+    "mv": "^2.1.1",
+    "nedb": "^1.8.0",
+    "request": "^2.88.0",
+    "rimraf": "^2.6.1",
+    "rxjs": "^6.4.0",
+    "tus-js-client": "https://github.com/pierreraii/tus-js-client.git"
+  },
+  "build": {
+    "productName": "Anghami",
+    "appId": "com.anghami.anghami",
+    "protocols": {
+      "name": "anghami",
+      "schemes": [
+        "anghami"
+      ]
+    },
+    "mac": {
+      "icon": "resources/icon.icns",
+      "target": [
+        "mas"
+      ],
+      "provisioningProfile": "embedded.provisionprofile",
+      "entitlements": "macos/app.parent.entitlements.plist",
+      "type": "distribution"
+    }
+  }
+}
