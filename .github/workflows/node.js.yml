@@ -23,12 +23,20 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm run build:linux
+    - run: mkdir built
+    - uses: montudor/action-zip@v0.1.0
+      with:
+          args: zip -qq -r ./built/Anghami.zip ./release/linux/Anghami-linux-x64
+    - uses: actions/upload-artifact@master
+      with:
+        name: release
+        path: built
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: release/linux/Anghami-linux-x64
+        file: built/Anghami.zip
         asset_name: Anghami-linux-x64
         tag: ${{ github.ref }}
         overwrite: true
-        body: "Latest binary."
+        body: "Latest Linux binary."
