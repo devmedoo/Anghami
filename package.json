@@ -34,7 +34,7 @@
   ],
   "devDependencies": {
     "@types/lru-cache": "^4.1.1",
-    "electron": "^8.0.3",
+    "electron": "^13.6.6",
     "electron-notarize": "^0.2.1",
     "electron-osx-sign": "^0.4.15",
     "electron-packager": "^14.2.1",
